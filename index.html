@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✅ Checklist Profissional - Site Pronto para AdSense</title>
+    <meta name="description" content="Checklist completo para aprovação no Google AdSense. Verifique todos os requisitos em uma página interativa.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
+    
+    <style>
+        :root {
+            --primary: #4285f4;
+            --success: #0f9d58;
+            --warning: #f4b400;
+            --danger: #db4437;
+            --dark: #202124;
+            --light: #f8f9fa;
+            --gray: #5f6368;
+            --border: #dadce0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #3367d6);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .progress-section {
+            padding: 30px;
+            background: var(--light);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: #e8eaed;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #0c8043);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 6px;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            color: var(--gray);
+        }
+        
+        .checklist-section {
+            padding: 30px;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .category-header {
+            background: var(--light);
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .category-count {
+            background: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .category-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .category.expanded .category-content {
+            padding: 20px;
+            max-height: 2000px;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-item:hover {
+            background: rgba(66, 133, 244, 0.03);
+        }
+        
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .checkbox.checked {
+            background: var(--success);
+            border-color: var(--success);
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            color: white;
+            font-weight: bold;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .priority {
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .priority.critical {
+            background: #fee;
+            color: var(--danger);
+        }
+        
+        .priority.high {
+            background: #fef3cd;
+            color: #b45b00;
+        }
+        
+        .priority.medium {
+            background: #e6f4ea;
+            color: var(--success);
+        }
+        
+        .item-description {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .btn-small {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3367d6;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(66, 133, 244, 0.1);
+        }
+        
+        .actions-section {
+            padding: 30px;
+            background: var(--light);
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn-large {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #0c8043;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(15, 157, 88, 0.3);
+        }
+        
+        .btn-print {
+            background: white;
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-print:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #ffecb3 0%, #ffecb3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: #e8f0fe;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions-section {
+                flex-direction: column;
+            }
+            
+            .btn-large {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Tema escuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --dark: #e8eaed;
+                --light: #202124;
+                --gray: #9aa0a6;
+                --border: #5f6368;
+            }
+            
+            body {
+                background: linear-gradient(135deg, #0d0d0f 0%, #202124 100%);
+            }
+            
+            .container {
+                background: #202124;
+            }
+            
+            .category-header {
+                background: #2d2e30;
+            }
+            
+            .btn-print {
+                background: #2d2e30;
+                color: var(--dark);
+                border-color: var(--border);
+            }
+            
+            .btn-print:hover {
+                background: #3c4043;
+            }
+            
+            .info-box {
+                background: #2d2e30;
+                border-left-color: var(--primary);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✅ Checklist Profissional</h1>
+            <div class="subtitle">Site Pronto para Google AdSense & Monetização</div>
+            
+            <div class="stats-bar">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalItems">55</div>
+                    <div class="stat-label">Itens de Verificação</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completedItems">0</div>
+                    <div class="stat-label">Concluídos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="completionRate">0%</div>
+                    <div class="stat-label">Taxa de Conclusão</div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="progress-section">
+            <div class="progress-text">
+                <span>Progresso Geral</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </section>
+        
+        <section class="checklist-section">
+            <!-- CATEGORIA 1 -->
+            <div class="category expanded">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">📋 1. Páginas Legais Obrigatórias</div>
+                    <div class="category-count">5/5</div>
+                </div>
+                <div class="category-content">
+                    <div class="checklist-item" data-priority="critical">
+                        <div class="checkbox" onclick="toggleCheck(this)"></div>
+                        <div class="item-content">
+                            <div class="item-title">
+                                Política de Privacidade (LGPD + GDPR)
+                                <span class="priority critical">CRÍTICO</span>
+                            </div>
+                            <div class="item-description">Página obrigatória com todos os requisitos da LGPD (Brasil) e GDPR (Europa).</div>
+                            <div class="item-actions">
+                                <a href="#" class="btn-small btn-primary" onclick="event.stopPropagation(); markAsDone(this)">Marcar como Feito</a>
+                                <a href="#" class="btn-small btn-outline" onclick="event.stopPropagation(); showDetails(this)">Ver Exemplo</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item" data-priority="critical">
+                        <div class="checkbox" onclick="toggleCheck(this)"></div>
+                        <div class="item-content">
+                            <div class="item-title">
+                                Termos de Uso/Serviço
+                                <span class="priority critical">CRÍTICO</span>
+                            </div>
+                            <div class="item-description">Define regras de uso do site, direitos e responsabilidades.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item" data-priority="high">
+                        <div class="checkbox" onclick="toggleCheck(this)"></div>
+                        <div class="item-content">
+                            <div class="item-title">
+                                Política de Cookies
+                                <span class="priority high">ALTA</span>
+                            </div>
+                            <div class="item-description">Banner de cookies funcional e página detalhada. Necessário para EU.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item" data-priority="high">
+                        <div class="checkbox" onclick="toggleCheck(this)"></div>
+                        <div class="item-content">
+                            <div class="item-title">
+                                Página de Contato Real
+                                <span class="priority high">ALTA</span>
+                            </div>
+                            <div class="item-description">Endereço, telefone e e-mail corporativo verificáveis.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        💡 <strong>Dica:</strong> Use geradores automáticos como <span class="highlight">Termly.io</span> ou <span class="highlight">Iubenda</span> para páginas legais.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CATEGORIA 2 -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">📱 2. Estrutura e Navegação</div>
+                    <div class="category-count">6/6</div>
+                </div>
+                <div class="category-content">
+                    <!-- Itens serão adicionados via JS -->
+                </div>
+            </div>
+            
+            <!-- CATEGORIA 3 -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">🔍 3. SEO e Indexação</div>
+                    <div class="category-count">8/8</div>
+                </div>
+                <div class="category-content">
+                    <!-- Itens serão adicionados via JS -->
+                </div>
+            </div>
+            
+            <!-- CATEGORIA 4 -->
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">📲 4. PWA (Web App Instalável)</div>
+                    <div class="category-count">5/5</div>
+                </div>
+                <div class="category-content">
+                    <!-- Itens serão adicionados via JS -->
+                </div>
+            </div>
+            
+            <!-- Adicionar mais categorias conforme o checklist -->
+            
+            <div class="category">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="category-title">🎯 12. Testes Finais</div>
+                    <div class="category-count">8/8</div>
+                </div>
+                <div class="category-content">
+                    <!-- Itens serão adicionados via JS -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="actions-section">
+            <button class="btn-large btn-success" onclick="saveProgress()">
+                💾 Salvar Progresso
+            </button>
+            <button class="btn-large btn-print" onclick="window.print()">
+                🖨️ Imprimir Checklist
+            </button>
+            <button class="btn-large btn-primary" onclick="exportPDF()">
+                📄 Exportar como PDF
+            </button>
+            <button class="btn-large btn-outline" onclick="resetChecklist()">
+                🔄 Reiniciar Checklist
+            </button>
+        </section>
+        
+        <footer>
+            <p>© 2025 MakerAI Studio - Checklist Profissional para AdSense</p>
+            <p>Dica: Complete pelo menos 95% dos itens antes de aplicar para o AdSense.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Dados completos do checklist
+        const checklistData = {
+            "estrutura-navegacao": [
+                { title: "Design responsivo (mobile-first)", priority: "critical", description: "Site funcional em dispositivos móveis, tablets e desktop." },
+                { title: "Menu responsivo (hambúrguer no mobile)", priority: "high", description: "Navegação otimizada para mobile com hamburger menu." },
+                { title: "Navegação clara e intuitiva", priority: "medium", description: "Usuário encontra conteúdo em até 3 cliques." },
+                { title: "Tema claro/escuro (manual ou automático)", priority: "medium", description: "Suporte a preferência do usuário." },
+                { title: "Sem pop-ups intrusivos", priority: "critical", description: "AdSense proíbe pop-ups que bloqueiam conteúdo." },
+                { title: "Sem conteúdo oculto ou redirecionamentos estranhos", priority: "critical", description: "Proibido pelo AdSense." }
+            ],
+            "seo-indexacao": [
+                { title: "Meta tags configuradas", priority: "high", description: "Title, description, Open Graph, Twitter Cards." },
+                { title: "URLs amigáveis (slug)", priority: "medium", description: "Ex: /blog/titulo-do-artigo" },
+                { title: "Estrutura de headings correta (H1, H2, H3)", priority: "medium", description: "Hierarquia semântica adequada." },
+                { title: "robots.txt configurado", priority: "medium", description: "Permitir indexação do Google." },
+                { title: "sitemap.xml criado", priority: "high", description: "Mapa do site para indexação." },
+                { title: "Conteúdo original (0% plágio)", priority: "critical", description: "AdSense rejeita conteúdo copiado." },
+                { title: "Conteúdo atualizado regularmente", priority: "medium", description: "Mostrar atividade recente." },
+                { title: "15+ artigos com +1000 palavras (boa prática)", priority: "medium", description: "Conteúdo robusto para monetização." }
+            ],
+            "pwa": [
+                { title: "manifest.json configurado", priority: "high", description: "Define nome, ícones, tema e comportamento." },
+                { title: "Service Worker funcional", priority: "high", description: "Cache estratégico e offline." },
+                { title: "Funciona offline", priority: "medium", description: "Carregar conteúdo básico sem internet." },
+                { title: "Ícones otimizados (vários tamanhos)", priority: "medium", description: "192x192, 512x512, etc." },
+                { title: "PWA instalável (Android/Chrome)", priority: "medium", description: "Prompt de instalação funcionando." }
+            ],
+            "testes-finais": [
+                { title: "Testar mobile", priority: "high", description: "Chrome DevTools + dispositivo real." },
+                { title: "Testar tablet", priority: "medium", description: "Responsividade intermediária." },
+                { title: "Testar desktop", priority: "medium", description: "Telas grandes e resoluções." },
+                { title: "Testar tema claro/escuro", priority: "low", description: "Funcionalidade em ambos os temas." },
+                { title: "Testar idiomas", priority: "high", description: "Todos os idiomas configurados." },
+                { title: "Testar offline", priority: "medium", description: "PWA funcional sem internet." },
+                { title: "Testar formulários", priority: "high", description: "Envio, validação e feedback." },
+                { title: "Testar AdSense spots", priority: "critical", description: "Verificar posicionamento e espaçamento." }
+            ]
+        };
+
+        // Estado do checklist
+        let checklistState = {
+            completed: [],
+            lastUpdated: new Date().toISOString()
+        };
+
+        // Carregar dados salvos
+        function loadProgress() {
+            const saved = localStorage.getItem('adsense-checklist');
+            if (saved) {
+                checklistState = JSON.parse(saved);
+                updateUI();
+            }
+        }
+
+        // Salvar progresso
+        function saveProgress() {
+            checklistState.lastUpdated = new Date().toISOString();
+            localStorage.setItem('adsense-checklist', JSON.stringify(checklistState));
+            
+            // Feedback visual
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✅ Salvo com Sucesso!';
+            btn.style.background = '#0f9d58';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+            }, 2000);
+            
+            updateStats();
+        }
+
+        // Marcar item como feito
+        function markAsDone(btn) {
+            const item = btn.closest('.checklist-item');
+            const checkbox = item.querySelector('.checkbox');
+            toggleCheck(checkbox);
+        }
+
+        // Alternar checkbox
+        function toggleCheck(checkbox) {
+            checkbox.classList.toggle('checked');
+            const itemId = checkbox.closest('.checklist-item').getAttribute('data-id');
+            
+            if (checkbox.classList.contains('checked')) {
+                if (!checklistState.completed.includes(itemId)) {
+                    checklistState.completed.push(itemId);
+                }
+            } else {
+                checklistState.completed = checklistState.completed.filter(id => id !== itemId);
+            }
+            
+            updateStats();
+        }
+
+        // Alternar categoria
+        function toggleCategory(header) {
+            header.parentElement.classList.toggle('expanded');
+        }
+
+        // Atualizar estatísticas
+        function updateStats() {
+            const total = document.querySelectorAll('.checklist-item').length;
+            const completed = checklistState.completed.length;
+            const percentage = Math.round((completed / total) * 100);
+            
+            document.getElementById('totalItems').textContent = total;
+            document.getElementById('completedItems').textContent = completed;
+            document.getElementById('completionRate').textContent = percentage + '%';
+            document.getElementById('progressPercent').textContent = percentage + '%';
+            document.getElementById('progressFill').style.width = percentage + '%';
+            
+            // Atualizar contadores das categorias
+            document.querySelectorAll('.category').forEach(category => {
+                const items = category.querySelectorAll('.checklist-item');
+                let completedCount = 0;
+                
+                items.forEach(item => {
+                    const id = item.getAttribute('data-id');
+                    if (checklistState.completed.includes(id)) {
+                        completedCount++;
+                        item.querySelector('.checkbox').classList.add('checked');
+                    }
+                });
+                
+                const countEl = category.querySelector('.category-count');
+                if (countEl) {
+                    countEl.textContent = `${completedCount}/${items.length}`;
+                }
+            });
+        }
+
+        // Exportar como PDF (simulação)
+        function exportPDF() {
+            alert('Funcionalidade de PDF será implementada. Por enquanto, use a opção de impressão (Ctrl+P).');
+        }
+
+        // Reiniciar checklist
+        function resetChecklist() {
+            if (confirm('Tem certeza que deseja reiniciar todo o checklist? Todo o progresso será perdido.')) {
+                checklistState = { completed: [], lastUpdated: new Date().toISOString() };
+                localStorage.removeItem('adsense-checklist');
+                
+                document.querySelectorAll('.checkbox').forEach(cb => {
+                    cb.classList.remove('checked');
+                });
+                
+                updateStats();
+                alert('Checklist reiniciado com sucesso!');
+            }
+        }
+
+        // Popular categorias dinamicamente
+        function populateCategories() {
+            let itemCounter = 1;
+            
+            // Estrutura e Navegação
+            const estruturaSection = document.querySelector('.category:nth-child(2) .category-content');
+            checklistData['estrutura-navegacao'].forEach(item => {
+                const itemId = `item-${itemCounter++}`;
+                estruturaSection.innerHTML += createChecklistItemHTML(itemId, item);
+            });
+            
+            // SEO e Indexação
+            const seoSection = document.querySelector('.category:nth-child(3) .category-content');
+            checklistData['seo-indexacao'].forEach(item => {
+                const itemId = `item-${itemCounter++}`;
+                seoSection.innerHTML += createChecklistItemHTML(itemId, item);
+            });
+            
+            // PWA
+            const pwaSection = document.querySelector('.category:nth-child(4) .category-content');
+            checklistData['pwa'].forEach(item => {
+                itemId = `item-${itemCounter++}`;
+                pwaSection.innerHTML += createChecklistItemHTML(itemId, item);
+            });
+            
+            // Testes Finais
+            const testesSection = document.querySelector('.category:last-child .category-content');
+            checklistData['testes-finais'].forEach(item => {
+                itemId = `item-${itemCounter++}`;
+                testesSection.innerHTML += createChecklistItemHTML(itemId, item);
+            });
+        }
+
+        // Criar HTML do item
+        function createChecklistItemHTML(id, data) {
+            return `
+                <div class="checklist-item" data-id="${id}" data-priority="${data.priority}">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <div class="item-content">
+                        <div class="item-title">
+                            ${data.title}
+                            <span class="priority ${data.priority}">${data.priority.toUpperCase()}</span>
+                        </div>
+                        <div class="item-description">${data.description}</div>
+                        <div class="item-actions">
+                            <button class="btn-small btn-primary" onclick="markAsDone(this)">Marcar como Feito</button>
+                            <button class="btn-small btn-outline" onclick="showDetails(this)">Ver Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Mostrar detalhes (simulação)
+        function showDetails(btn) {
+            const item = btn.closest('.checklist-item');
+            const title = item.querySelector('.item-title').textContent;
+            const description = item.querySelector('.item-description').textContent;
+            
+            alert(`🔍 ${title}\n\n${description}\n\n💡 Dica: Verifique cuidadosamente este requisito antes de marcar como concluído.`);
+        }
+
+        // Atualizar UI completa
+        function updateUI() {
+            populateCategories();
+            updateStats();
+            
+            // Marcar itens concluídos
+            checklistState.completed.forEach(id => {
+                const item = document.querySelector(`[data-id="${id}"]`);
+                if (item) {
+                    item.querySelector('.checkbox').classList.add('checked');
+                }
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgress();
+            updateUI();
+            
+            // Adicionar efeito de digitação no título
+            const title = document.querySelector('h1');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html>
