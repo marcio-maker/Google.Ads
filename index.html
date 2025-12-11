@@ -3,22 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✅ Checklist Profissional - Site Pronto para AdSense</title>
-    <meta name="description" content="Checklist completo para aprovação no Google AdSense. Verifique todos os requisitos em uma página interativa.">
+    <title>🧠 MAPPA MENTAL - Projetos Profissionais MakerAI</title>
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* ==================== RESET & VARIÁVEIS ==================== */
         :root {
-            --primary: #4285f4;
-            --success: #0f9d58;
-            --warning: #f4b400;
-            --danger: #db4437;
-            --dark: #202124;
+            /* Cores */
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #e63946;
+            --dark: #1a1a2e;
             --light: #f8f9fa;
-            --gray: #5f6368;
-            --border: #dadce0;
+            --gray: #6c757d;
+            
+            /* Espaçamentos */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            
+            /* Bordas */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
+            
+            /* Transições */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        /* Tema escuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light: #1a1a2e;
+                --dark: #f8f9fa;
+                --gray: #adb5bd;
+                --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+                --shadow-md: 0 5px 15px rgba(0,0,0,0.3);
+            }
         }
         
         * {
@@ -27,805 +67,1517 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: var(--dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            line-height: 1.6;
             min-height: 100vh;
             padding: 20px;
         }
         
-        .container {
-            max-width: 1000px;
+        /* ==================== LAYOUT PRINCIPAL ==================== */
+        .mindmap-container {
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
             overflow: hidden;
+            min-height: 90vh;
         }
         
-        header {
-            background: linear-gradient(135deg, var(--primary), #3367d6);
+        /* ==================== CABEÇALHO ==================== */
+        .mindmap-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 40px 30px;
+            padding: var(--space-xl) var(--space-lg);
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .mindmap-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: float 20s linear infinite;
+            z-index: 0;
         }
         
-        .subtitle {
-            font-size: 1.1rem;
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .mindmap-header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+            line-height: 1.2;
+        }
+        
+        .mindmap-header p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
             opacity: 0.9;
-            margin-bottom: 20px;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .stats-bar {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-        
-        .stat-card {
-            background: rgba(255,255,255,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .progress-section {
-            padding: 30px;
-            background: var(--light);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .progress-bar {
-            height: 12px;
-            background: #e8eaed;
-            border-radius: 6px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--success), #0c8043);
-            width: 0%;
-            transition: width 0.5s ease;
-            border-radius: 6px;
-        }
-        
-        .progress-text {
+        /* ==================== NAVEGAÇÃO VISUAL ==================== */
+        .nav-visual {
             display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            color: var(--gray);
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+            flex-wrap: wrap;
         }
         
-        .checklist-section {
-            padding: 30px;
-        }
-        
-        .category {
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        
-        .category-header {
-            background: var(--light);
-            padding: 20px;
-            border-bottom: 1px solid var(--border);
+        .nav-item {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            padding: var(--space-md);
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
             cursor: pointer;
+            transition: var(--transition-normal);
+            min-width: 100px;
         }
         
-        .category-title {
-            font-size: 1.3rem;
-            font-weight: 600;
+        .nav-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-5px);
+        }
+        
+        .nav-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        /* ==================== CONTEÚDO PRINCIPAL ==================== */
+        .mindmap-content {
+            padding: var(--space-xl);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        /* ==================== CARDS VISUAIS ==================== */
+        .mind-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .mind-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .mind-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--dark);
         }
         
-        .category-count {
+        /* ==================== LISTAS VISUAIS ==================== */
+        .visual-list {
+            list-style: none;
+        }
+        
+        .visual-item {
+            padding: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: var(--radius-sm);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+        
+        .visual-item.critical {
+            border-left-color: var(--danger);
+            background: rgba(230, 57, 70, 0.05);
+        }
+        
+        .visual-item.success {
+            border-left-color: var(--success);
+            background: rgba(76, 201, 240, 0.05);
+        }
+        
+        .visual-item.warning {
+            border-left-color: var(--warning);
+            background: rgba(248, 150, 30, 0.05);
+        }
+        
+        .item-number {
+            width: 30px;
+            height: 30px;
             background: var(--primary);
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .visual-item.critical .item-number {
+            background: var(--danger);
+        }
+        
+        /* ==================== FLUXOGRAMA VISUAL ==================== */
+        .flowchart {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            grid-column: 1 / -1;
+            margin-top: var(--space-lg);
+        }
+        
+        .flowchart-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: var(--space-xl);
+            color: var(--dark);
+            font-weight: 800;
+        }
+        
+        .flowchart-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            position: relative;
+        }
+        
+        .flowchart-steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 0;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .step-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto var(--space-md);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-normal);
+        }
+        
+        .step-circle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .step-number {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+        
+        .step-name {
             font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .step-description {
+            padding: var(--space-md);
+            background: white;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            font-size: 0.95rem;
+        }
+        
+        /* ==================== TIMELINE ==================== */
+        .timeline {
+            position: relative;
+            padding: var(--space-lg) 0;
+            grid-column: 1 / -1;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 45%;
+            margin-bottom: var(--space-xl);
+            padding: var(--space-md);
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 4px white, 0 0 0 8px var(--primary);
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -10px;
+        }
+        
+        .timeline-time {
+            font-size: 0.9rem;
+            color: var(--primary);
             font-weight: 600;
+            margin-bottom: 5px;
         }
         
-        .category-content {
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--dark);
         }
         
-        .category.expanded .category-content {
-            padding: 20px;
-            max-height: 2000px;
+        /* ==================== CHECKLIST INTERATIVO ==================== */
+        .checklist-section {
+            grid-column: 1 / -1;
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .checklist-category {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
         }
         
         .checklist-item {
             display: flex;
-            align-items: flex-start;
-            padding: 15px;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.2s;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         
         .checklist-item:last-child {
             border-bottom: none;
         }
         
-        .checklist-item:hover {
-            background: rgba(66, 133, 244, 0.03);
-        }
-        
-        .checkbox {
+        .check-item {
             width: 24px;
             height: 24px;
-            border: 2px solid var(--border);
-            border-radius: 6px;
-            margin-right: 15px;
-            flex-shrink: 0;
+            border: 2px solid var(--gray);
+            border-radius: var(--radius-sm);
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            transition: var(--transition-fast);
         }
         
-        .checkbox.checked {
+        .check-item.checked {
             background: var(--success);
             border-color: var(--success);
+            color: white;
         }
         
-        .checkbox.checked::after {
-            content: "✓";
-            color: white;
+        .check-item.checked::after {
+            content: '✓';
             font-weight: bold;
         }
         
-        .item-content {
-            flex: 1;
+        /* ==================== RESPONSIVIDADE ==================== */
+        @media (max-width: 768px) {
+            .mindmap-content {
+                padding: var(--space-md);
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-visual {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-item {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .flowchart-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .flowchart-steps::before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: var(--space-lg);
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 50px);
+                left: 50px !important;
+                margin-left: 0;
+            }
+            
+            .timeline-item::before {
+                left: -40px !important;
+            }
+            
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
-        .item-title {
-            font-weight: 500;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* ==================== ANIMAÇÕES ==================== */
+        @keyframes float {
+            0% { transform: rotate(0deg) translateX(0); }
+            100% { transform: rotate(360deg) translateX(0); }
         }
         
-        .priority {
-            font-size: 0.8rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .priority.critical {
-            background: #fee;
-            color: var(--danger);
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
         }
         
-        .priority.high {
-            background: #fef3cd;
-            color: #b45b00;
+        /* ==================== RODAPÉ ==================== */
+        .mindmap-footer {
+            text-align: center;
+            padding: var(--space-xl);
+            background: var(--dark);
+            color: white;
+            margin-top: var(--space-xl);
         }
         
-        .priority.medium {
-            background: #e6f4ea;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .footer-section h3 {
+            margin-bottom: var(--space-md);
             color: var(--success);
         }
         
-        .item-description {
-            font-size: 0.95rem;
-            color: var(--gray);
-            margin-top: 5px;
-        }
-        
-        .item-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .btn-small {
+        /* ==================== UTILITÁRIOS ==================== */
+        .tag {
+            display: inline-block;
             padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            text-decoration: none;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .btn-primary {
             background: var(--primary);
             color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #3367d6;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background: rgba(66, 133, 244, 0.1);
-        }
-        
-        .actions-section {
-            padding: 30px;
-            background: var(--light);
-            border-top: 1px solid var(--border);
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .btn-large {
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            margin-right: 8px;
+            margin-bottom: 8px;
         }
         
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-        
-        .btn-success:hover {
-            background: #0c8043;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(15, 157, 88, 0.3);
-        }
-        
-        .btn-print {
-            background: white;
-            color: var(--dark);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-print:hover {
-            background: var(--light);
-            transform: translateY(-2px);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-        }
+        .tag.critical { background: var(--danger); }
+        .tag.high { background: var(--warning); }
+        .tag.medium { background: var(--accent); }
+        .tag.low { background: var(--success); }
         
         .highlight {
-            background: linear-gradient(120deg, #ffecb3 0%, #ffecb3 100%);
+            background: linear-gradient(120deg, rgba(67, 97, 238, 0.1) 0%, rgba(67, 97, 238, 0.1) 100%);
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 600;
         }
         
-        .info-box {
-            background: #e8f0fe;
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 8px;
         }
         
-        @media (max-width: 768px) {
-            .container {
-                border-radius: 0;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .stats-bar {
-                grid-template-columns: 1fr;
-            }
-            
-            .actions-section {
-                flex-direction: column;
-            }
-            
-            .btn-large {
-                width: 100%;
-                justify-content: center;
-            }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: var(--space-lg);
+            color: var(--dark);
+            text-align: center;
+            position: relative;
+            padding-bottom: var(--space-md);
         }
         
-        /* Tema escuro */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --dark: #e8eaed;
-                --light: #202124;
-                --gray: #9aa0a6;
-                --border: #5f6368;
-            }
-            
-            body {
-                background: linear-gradient(135deg, #0d0d0f 0%, #202124 100%);
-            }
-            
-            .container {
-                background: #202124;
-            }
-            
-            .category-header {
-                background: #2d2e30;
-            }
-            
-            .btn-print {
-                background: #2d2e30;
-                color: var(--dark);
-                border-color: var(--border);
-            }
-            
-            .btn-print:hover {
-                background: #3c4043;
-            }
-            
-            .info-box {
-                background: #2d2e30;
-                border-left-color: var(--primary);
-            }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        /* ==================== BOTÕES ==================== */
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>✅ Checklist Profissional</h1>
-            <div class="subtitle">Site Pronto para Google AdSense & Monetização</div>
-            
-            <div class="stats-bar">
-                <div class="stat-card">
-                    <div class="stat-number" id="totalItems">55</div>
-                    <div class="stat-label">Itens de Verificação</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="completedItems">0</div>
-                    <div class="stat-label">Concluídos</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" id="completionRate">0%</div>
-                    <div class="stat-label">Taxa de Conclusão</div>
+    <div class="mindmap-container">
+        <!-- CABEÇALHO -->
+        <header class="mindmap-header">
+            <div class="header-content">
+                <h1>🧠 MAPPA MENTAL VISUAL</h1>
+                <p>Guia Definitivo para Projetos Profissionais MakerAI</p>
+                
+                <!-- NAVEGAÇÃO VISUAL -->
+                <div class="nav-visual">
+                    <div class="nav-item" onclick="scrollToSection('arquitetura')">
+                        <div class="nav-icon">🏗️</div>
+                        <span>Arquitetura</span>
+                    </div>
+                    <div class="nav-item" onclick="scrollToSection('fluxo')">
+                        <div class="nav-icon">📈</div>
+                        <span>Fluxo</span>
+                    </div>
+                    <div class="nav-item" onclick="scrollToSection('checklist')">
+                        <div class="nav-icon">✅</div>
+                        <span>Checklist</span>
+                    </div>
+                    <div class="nav-item" onclick="scrollToSection('prioridades')">
+                        <div class="nav-icon">🎯</div>
+                        <span>Prioridades</span>
+                    </div>
+                    <div class="nav-item" onclick="scrollToSection('recursos')">
+                        <div class="nav-icon">🔧</div>
+                        <span>Recursos</span>
+                    </div>
                 </div>
             </div>
         </header>
         
-        <section class="progress-section">
-            <div class="progress-text">
-                <span>Progresso Geral</span>
-                <span id="progressPercent">0%</span>
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="mindmap-content">
+            
+            <!-- CARD 1: ARQUITETURA -->
+            <div class="mind-card" id="arquitetura">
+                <div class="card-header">
+                    <div class="card-icon">🏗️</div>
+                    <h2 class="card-title">Arquitetura Padrão</h2>
+                </div>
+                
+                <p style="margin-bottom: var(--space-md); color: var(--gray);">
+                    <strong>🎯 REGRA DE OURO:</strong> Comece com 1 arquivo, separe conforme cresce
+                </p>
+                
+                <ul class="visual-list">
+                    <li class="visual-item critical">
+                        <div class="item-number">1</div>
+                        <div>
+                            <strong>index.html</strong> - Página principal (Hub)
+                            <div class="tag critical">CRÍTICO</div>
+                            <small>Tudo começa aqui</small>
+                        </div>
+                    </li>
+                    <li class="visual-item">
+                        <div class="item-number">2</div>
+                        <div>
+                            <strong>/assets/</strong> - Recursos otimizados
+                            <div class="tag high">ALTA</div>
+                            <small>CSS, JS, imagens WebP</small>
+                        </div>
+                    </li>
+                    <li class="visual-item">
+                        <div class="item-number">3</div>
+                        <div>
+                            <strong>/pages/</strong> - Páginas especializadas
+                            <div class="tag medium">MÉDIA</div>
+                            <small>portfolio/, blog/, legal/</small>
+                        </div>
+                    </li>
+                    <li class="visual-item success">
+                        <div class="item-number">4</div>
+                        <div>
+                            <strong>/data/</strong> - Estado da aplicação
+                            <div class="tag low">BAIXA</div>
+                            <small>JSON, configurações</small>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div style="margin-top: var(--space-md); padding: var(--space-md); background: rgba(67, 97, 238, 0.05); border-radius: var(--radius-md);">
+                    <strong>💡 EXEMPLO PRÁTICO:</strong>
+                    <p style="margin-top: 5px; font-size: 0.9rem;">
+                        Seu projeto "ClienteX" começa como <span class="highlight">clienteX.html</span>.<br>
+                        Quando tiver 10 páginas, vira <span class="highlight">/clienteX/</span> com subpastas.
+                    </p>
+                </div>
             </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
+            
+            <!-- CARD 2: PERFORMANCE -->
+            <div class="mind-card">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <h2 class="card-title">Performance Obrigatória</h2>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); margin-bottom: var(--space-md);">
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(76, 201, 240, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--success);">2.5s</div>
+                        <small>LCP máximo</small>
+                    </div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(67, 97, 238, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary);">2MB</div>
+                        <small>Bundle máximo</small>
+                    </div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(248, 150, 30, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--warning);">300</div>
+                        <small>Linhas CSS críticas</small>
+                    </div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(230, 57, 70, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--danger);">90+</div>
+                        <small>Lighthouse score</small>
+                    </div>
+                </div>
+                
+                <ul class="visual-list">
+                    <li class="visual-item critical">
+                        <span class="emoji">🎯</span>
+                        <strong>CSS crítico INLINE</strong> (300 linhas máximo)
+                    </li>
+                    <li class="visual-item warning">
+                        <span class="emoji">🖼️</span>
+                        <strong>Imagens WebP</strong> + lazy loading automático
+                    </li>
+                    <li class="visual-item">
+                        <span class="emoji">⚙️</span>
+                        <strong>Service Worker</strong> para cache offline
+                    </li>
+                    <li class="visual-item success">
+                        <span class="emoji">📱</span>
+                        <strong>Mobile-first</strong> SEMPRE comece pelo celular
+                    </li>
+                </ul>
             </div>
-        </section>
+            
+            <!-- CARD 3: UX/UI -->
+            <div class="mind-card">
+                <div class="card-header">
+                    <div class="card-icon">🎨</div>
+                    <h2 class="card-title">UX/UI Consistente</h2>
+                </div>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space-md);">
+                    <span class="tag critical">Mobile-first</span>
+                    <span class="tag high">Temas claro/escuro</span>
+                    <span class="tag medium">Feedback visual</span>
+                    <span class="tag low">Offline-ready</span>
+                    <span class="tag">ARIA labels</span>
+                    <span class="tag">Contrastes</span>
+                </div>
+                
+                <div style="margin-bottom: var(--space-md);">
+                    <strong>🎨 DESIGN SYSTEM:</strong>
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <div style="width: 30px; height: 30px; background: var(--primary); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 30px; height: 30px; background: var(--secondary); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 30px; height: 30px; background: var(--accent); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 30px; height: 30px; background: var(--success); border-radius: var(--radius-sm);"></div>
+                    </div>
+                </div>
+                
+                <p><strong>💡 EXEMPLO:</strong> Todo botão tem:</p>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li>Hover effect</li>
+                    <li>Active state</li>
+                    <li>Loading state</li>
+                    <li>Disabled state</li>
+                </ul>
+            </div>
+            
+            <!-- CARD 4: NEGÓCIO -->
+            <div class="mind-card">
+                <div class="card-header">
+                    <div class="card-icon">💰</div>
+                    <h2 class="card-title">Modelo de Negócio</h2>
+                </div>
+                
+                <ul class="visual-list">
+                    <li class="visual-item critical">
+                        <span class="emoji">🎯</span>
+                        <div>
+                            <strong>Versão gratuita funcional</strong>
+                            <small>Cliente testa antes de pagar</small>
+                        </div>
+                    </li>
+                    <li class="visual-item warning">
+                        <span class="emoji">⬆️</span>
+                        <div>
+                            <strong>Upgrade óbvio</strong>
+                            <small>"Quero isso" claro e fácil</small>
+                        </div>
+                    </li>
+                    <li class="visual-item">
+                        <span class="emoji">📊</span>
+                        <div>
+                            <strong>Dashboard com insights</strong>
+                            <small>Mostre valor, não só dados</small>
+                        </div>
+                    </li>
+                    <li class="visual-item success">
+                        <span class="emoji">💾</span>
+                        <div>
+                            <strong>Exportação sempre disponível</strong>
+                            <small>Nunca prenda dados do cliente</small>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(248, 150, 30, 0.1); border-radius: var(--radius-md);">
+                    <strong>⚠️ NÃO ESQUEÇA:</strong>
+                    <p style="margin-top: 5px; font-size: 0.9rem;">
+                        Stripe/PagSeguro integrado desde o início.<br>
+                        Planos: Free → Pro → Enterprise
+                    </p>
+                </div>
+            </div>
+            
+            <!-- FLUXOGRAMA VISUAL -->
+            <section class="flowchart" id="fluxo">
+                <h2 class="flowchart-title">📈 FLUXO DE DESENVOLVIMENTO</h2>
+                
+                <div class="flowchart-steps">
+                    <div class="step">
+                        <div class="step-circle">
+                            <div class="step-number">1</div>
+                            <div class="step-name">SEMANA 1</div>
+                        </div>
+                        <div class="step-description">
+                            <strong>MVP (Funcionalidade Core)</strong>
+                            <p style="margin-top: 8px; font-size: 0.9rem;">
+                                Página única funcional<br>
+                                Design responsivo<br>
+                                SEO básico<br>
+                                <span class="highlight">1 arquivo HTML</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-circle">
+                            <div class="step-number">2</div>
+                            <div class="step-name">SEMANA 2</div>
+                        </div>
+                        <div class="step-description">
+                            <strong>V1.0 (Profissional)</strong>
+                            <p style="margin-top: 8px; font-size: 0.9rem;">
+                                Analytics + PWA<br>
+                                Multi-idioma<br>
+                                Exportação de dados<br>
+                                <span class="highlight">Estrutura de pastas</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-circle">
+                            <div class="step-number">3</div>
+                            <div class="step-name">SEMANA 3+</div>
+                        </div>
+                        <div class="step-description">
+                            <strong>V2.0 (Avançado)</strong>
+                            <p style="margin-top: 8px; font-size: 0.9rem;">
+                                Dashboard avançado<br>
+                                Integrações API<br>
+                                Notificações<br>
+                                Relatórios PDF<br>
+                                <span class="highlight">Sistema completo</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--space-xl);">
+                    <button class="btn btn-primary" onclick="showExample('fluxo')">
+                        <i class="fas fa-play"></i> Ver Exemplo Prático
+                    </button>
+                </div>
+            </section>
+            
+            <!-- TIMELINE DE PRIORIDADES -->
+            <section class="timeline" id="prioridades">
+                <h2 class="section-title">⏰ TIMELINE DE PRIORIDADES</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-time">HOJE (Dia 1)</div>
+                    <h3 class="timeline-title">🚀 Lançamento MVP</h3>
+                    <p style="margin-bottom: var(--space-sm);">
+                        <strong>O que entregar:</strong>
+                    </p>
+                    <ul style="margin-left: 20px;">
+                        <li>Página principal funcional</li>
+                        <li>Funcionalidade core funcionando</li>
+                        <li>Design mobile-first</li>
+                        <li>Performance básica</li>
+                    </ul>
+                    <div style="margin-top: var(--space-sm);">
+                        <span class="tag critical">CRÍTICO</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Mobile</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-time">ESTA SEMANA (Dias 2-7)</div>
+                    <h3 class="timeline-title">🔧 Otimização Básica</h3>
+                    <p style="margin-bottom: var(--space-sm);">
+                        <strong>Adicionar agora:</strong>
+                    </p>
+                    <ul style="margin-left: 20px;">
+                        <li>Error tracking básico</li>
+                        <li>Backup automático</li>
+                        <li>FAQ search (Ctrl+K)</li>
+                        <li>Tema claro/escuro</li>
+                    </ul>
+                    <div style="margin-top: var(--space-sm);">
+                        <span class="tag high">ALTA</span>
+                        <span class="tag">Backup</span>
+                        <span class="tag">Errors</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-time">PRÓXIMA SEMANA (Dias 8-14)</div>
+                    <h3 class="timeline-title">💰 Monetização</h3>
+                    <p style="margin-bottom: var(--space-sm);">
+                        <strong>Configurar pagamentos:</strong>
+                    </p>
+                    <ul style="margin-left: 20px;">
+                        <li>Stripe/PagSeguro integrado</li>
+                        <li>Planos free/pro/enterprise</li>
+                        <li>LGPD compliance</li>
+                        <li>Basic monitoring</li>
+                    </ul>
+                    <div style="margin-top: var(--space-sm);">
+                        <span class="tag critical">CRÍTICO</span>
+                        <span class="tag">$$$</span>
+                        <span class="tag">Legal</span>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-time">ESTE MÊS (Dias 15-30)</div>
+                    <h3 class="timeline-title">🚀 Escala</h3>
+                    <p style="margin-bottom: var(--space-sm);">
+                        <strong>Preparar para crescimento:</strong>
+                    </p>
+                    <ul style="margin-left: 20px;">
+                        <li>Testes automatizados</li>
+                        <li>CI/CD pipeline</li>
+                        <li>Advanced analytics</li>
+                        <li>Disaster recovery</li>
+                    </ul>
+                    <div style="margin-top: var(--space-sm);">
+                        <span class="tag medium">MÉDIA</span>
+                        <span class="tag">Scale</span>
+                        <span class="tag">Tests</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CHECKLIST INTERATIVO -->
+            <section class="checklist-section" id="checklist">
+                <h2 class="section-title">✅ CHECKLIST INTERATIVO</h2>
+                <p style="text-align: center; margin-bottom: var(--space-lg); color: var(--gray);">
+                    Marque conforme for implementando. Salva automaticamente!
+                </p>
+                
+                <div class="checklist-grid">
+                    <!-- COLUNA 1 -->
+                    <div class="checklist-category">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--primary);">🏗️ ARQUITETURA</h3>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="arch-1" onclick="toggleCheck(this)"></div>
+                            <span>1 arquivo HTML inicial</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="arch-2" onclick="toggleCheck(this)"></div>
+                            <span>CSS variáveis (design system)</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="arch-3" onclick="toggleCheck(this)"></div>
+                            <span>JS em funções puras</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="arch-4" onclick="toggleCheck(this)"></div>
+                            <span>Dados mockados inicialmente</span>
+                        </div>
+                    </div>
+                    
+                    <!-- COLUNA 2 -->
+                    <div class="checklist-category">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--accent);">⚡ PERFORMANCE</h3>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="perf-1" onclick="toggleCheck(this)"></div>
+                            <span>CSS crítico inline (300 linhas)</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="perf-2" onclick="toggleCheck(this)"></div>
+                            <span>Imagens WebP + lazy loading</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="perf-3" onclick="toggleCheck(this)"></div>
+                            <span>Service Worker configurado</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="perf-4" onclick="toggleCheck(this)"></div>
+                            <span>Bundle total < 2MB</span>
+                        </div>
+                    </div>
+                    
+                    <!-- COLUNA 3 -->
+                    <div class="checklist-category">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--success);">🎨 UX/UI</h3>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="ux-1" onclick="toggleCheck(this)"></div>
+                            <span>Mobile-first implementado</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="ux-2" onclick="toggleCheck(this)"></div>
+                            <span>Tema claro/escuro</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="ux-3" onclick="toggleCheck(this)"></div>
+                            <span>Feedback visual para ações</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="ux-4" onclick="toggleCheck(this)"></div>
+                            <span>Funciona offline</span>
+                        </div>
+                    </div>
+                    
+                    <!-- COLUNA 4 -->
+                    <div class="checklist-category">
+                        <h3 style="margin-bottom: var(--space-md); color: var(--warning);">💰 NEGÓCIO</h3>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="biz-1" onclick="toggleCheck(this)"></div>
+                            <span>Versão gratuita funcional</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="biz-2" onclick="toggleCheck(this)"></div>
+                            <span>Upgrade claro para pago</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="biz-3" onclick="toggleCheck(this)"></div>
+                            <span>Dashboard com insights</span>
+                        </div>
+                        <div class="checklist-item">
+                            <div class="check-item" data-id="biz-4" onclick="toggleCheck(this)"></div>
+                            <span>Exportação sempre disponível</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--space-xl);">
+                    <div style="display: inline-flex; align-items: center; gap: var(--space-md);">
+                        <div style="text-align: center;">
+                            <div id="progressPercent" style="font-size: 3rem; font-weight: 800; color: var(--success);">0%</div>
+                            <small>Progresso</small>
+                        </div>
+                        <div style="width: 300px; height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                            <div id="progressBar" style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--success), #0c8043); transition: width 0.5s ease;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: var(--space-lg);">
+                    <button class="btn btn-primary" onclick="saveChecklist()">
+                        <i class="fas fa-save"></i> Salvar Progresso
+                    </button>
+                    <button class="btn btn-outline" onclick="resetChecklist()" style="margin-left: 10px;">
+                        <i class="fas fa-redo"></i> Reiniciar
+                    </button>
+                </div>
+            </section>
+            
+            <!-- RECURSOS VISUAIS -->
+            <section class="flowchart" id="recursos">
+                <h2 class="section-title">🔧 RECURSOS & FERRAMENTAS</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg);">
+                    <!-- CARD TOOL 1 -->
+                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+                            <div style="width: 40px; height: 40px; background: var(--primary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h3 style="color: var(--dark);">Performance</h3>
+                        </div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Lighthouse</strong> - Teste automatizado</li>
+                            <li><strong>WebPageTest</strong> - Análise detalhada</li>
+                            <li><strong>Squoosh</strong> - Otimizar imagens</li>
+                            <li><strong>Workbox</strong> - Service Workers</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- CARD TOOL 2 -->
+                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+                            <div style="width: 40px; height: 40px; background: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 style="color: var(--dark);">Desenvolvimento</h3>
+                        </div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>VS Code</strong> - Editor principal</li>
+                            <li><strong>Live Server</strong> - Preview local</li>
+                            <li><strong>Git</strong> - Controle de versão</li>
+                            <li><strong>Chrome DevTools</strong> - Debug</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- CARD TOOL 3 -->
+                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+                            <div style="width: 40px; height: 40px; background: var(--success); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 style="color: var(--dark);">Analytics</h3>
+                        </div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Google Analytics</strong> - Básico</li>
+                            <li><strong>Plausible</strong> - Privacidade</li>
+                            <li><strong>Hotjar</strong> - Heatmaps</li>
+                            <li><strong>Sentry</strong> - Error tracking</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- CARD TOOL 4 -->
+                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
+                            <div style="width: 40px; height: 40px; background: var(--warning); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <h3 style="color: var(--dark);">Monetização</h3>
+                        </div>
+                        <ul style="margin-left: 20px;">
+                            <li><strong>Stripe</strong> - Pagamentos global</li>
+                            <li><strong>PagSeguro</strong> - Brasil</li>
+                            <li><strong>Paddle</strong> - Tudo incluído</li>
+                            <li><strong>Lemonsqueezy</strong> - Simples</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- RESUMO VISUAL -->
+            <div class="mind-card" style="grid-column: 1 / -1;">
+                <div class="card-header">
+                    <div class="card-icon">🧠</div>
+                    <h2 class="card-title">FÓRMULA DO SUCESSO MAKERAI</h2>
+                </div>
+                
+                <div style="text-align: center; padding: var(--space-lg);">
+                    <div style="font-size: 2rem; font-weight: 800; margin-bottom: var(--space-md);">
+                        <span style="color: var(--primary);">PROJETO PERFEITO</span> = 
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg);">
+                        <div style="padding: var(--space-md); background: rgba(67, 97, 238, 0.1); border-radius: var(--radius-lg);">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">🏗️</div>
+                            <h3>Arquitetura Padrão</h3>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">1 arquivo → Múltiplos</p>
+                        </div>
+                        
+                        <div style="padding: var(--space-md); background: rgba(76, 201, 240, 0.1); border-radius: var(--radius-lg);">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">⚡</div>
+                            <h3>Performance Obrigatória</h3>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">LCP < 2.5s</p>
+                        </div>
+                        
+                        <div style="padding: var(--space-md); background: rgba(248, 150, 30, 0.1); border-radius: var(--radius-lg);">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">🎨</div>
+                            <h3>UX Consistente</h3>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">Mobile + Temas</p>
+                        </div>
+                        
+                        <div style="padding: var(--space-md); background: rgba(247, 37, 133, 0.1); border-radius: var(--radius-lg);">
+                            <div style="font-size: 3rem; margin-bottom: 10px;">💰</div>
+                            <h3>Monetização Clara</h3>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">Free → Pro → Enterprise</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: var(--space-xl); padding: var(--space-md); background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: var(--radius-lg);">
+                        <h3 style="margin-bottom: var(--space-sm);">🎯 PRÓXIMO PROJETO:</h3>
+                        <p>1. Lembre das 5 Regras de Ouro<br>
+                        2. Siga o Fluxo de 3 Passos<br>
+                        3. Use este Checklist<br>
+                        4. Aplique a Fórmula</p>
+                    </div>
+                </div>
+            </div>
+        </main>
         
-        <section class="checklist-section">
-            <!-- CATEGORIA 1 -->
-            <div class="category expanded">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <div class="category-title">📋 1. Páginas Legais Obrigatórias</div>
-                    <div class="category-count">5/5</div>
+        <!-- RODAPÉ -->
+        <footer class="mindmap-footer">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>📚 PARA ESTUDAR</h3>
+                    <ul style="list-style: none;">
+                        <li>• Web.dev (Google)</li>
+                        <li>• MDN Web Docs</li>
+                        <li>• CSS-Tricks</li>
+                        <li>• Smashing Magazine</li>
+                    </ul>
                 </div>
-                <div class="category-content">
-                    <div class="checklist-item" data-priority="critical">
-                        <div class="checkbox" onclick="toggleCheck(this)"></div>
-                        <div class="item-content">
-                            <div class="item-title">
-                                Política de Privacidade (LGPD + GDPR)
-                                <span class="priority critical">CRÍTICO</span>
-                            </div>
-                            <div class="item-description">Página obrigatória com todos os requisitos da LGPD (Brasil) e GDPR (Europa).</div>
-                            <div class="item-actions">
-                                <a href="#" class="btn-small btn-primary" onclick="event.stopPropagation(); markAsDone(this)">Marcar como Feito</a>
-                                <a href="#" class="btn-small btn-outline" onclick="event.stopPropagation(); showDetails(this)">Ver Exemplo</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="checklist-item" data-priority="critical">
-                        <div class="checkbox" onclick="toggleCheck(this)"></div>
-                        <div class="item-content">
-                            <div class="item-title">
-                                Termos de Uso/Serviço
-                                <span class="priority critical">CRÍTICO</span>
-                            </div>
-                            <div class="item-description">Define regras de uso do site, direitos e responsabilidades.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="checklist-item" data-priority="high">
-                        <div class="checkbox" onclick="toggleCheck(this)"></div>
-                        <div class="item-content">
-                            <div class="item-title">
-                                Política de Cookies
-                                <span class="priority high">ALTA</span>
-                            </div>
-                            <div class="item-description">Banner de cookies funcional e página detalhada. Necessário para EU.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="checklist-item" data-priority="high">
-                        <div class="checkbox" onclick="toggleCheck(this)"></div>
-                        <div class="item-content">
-                            <div class="item-title">
-                                Página de Contato Real
-                                <span class="priority high">ALTA</span>
-                            </div>
-                            <div class="item-description">Endereço, telefone e e-mail corporativo verificáveis.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-box">
-                        💡 <strong>Dica:</strong> Use geradores automáticos como <span class="highlight">Termly.io</span> ou <span class="highlight">Iubenda</span> para páginas legais.
-                    </div>
+                
+                <div class="footer-section">
+                    <h3>🔧 FERRAMENTAS</h3>
+                    <ul style="list-style: none;">
+                        <li>• Figma (design)</li>
+                        <li>• GitHub (código)</li>
+                        <li>• Netlify (deploy)</li>
+                        <li>• Notion (organização)</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>🎯 CHECKLIST MENTAL</h3>
+                    <p>
+                        Antes de cada projeto:<br>
+                        1. Sigo o padrão?<br>
+                        2. Performance ok?<br>
+                        3. Mobile-first?<br>
+                        4. Monetização clara?
+                    </p>
                 </div>
             </div>
             
-            <!-- CATEGORIA 2 -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <div class="category-title">📱 2. Estrutura e Navegação</div>
-                    <div class="category-count">6/6</div>
-                </div>
-                <div class="category-content">
-                    <!-- Itens serão adicionados via JS -->
-                </div>
+            <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>🧠 <strong>MAPPA MENTAL VISUAL</strong> - MakerAI Studio © 2025</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                    Este é seu sistema operacional para projetos web profissionais.<br>
+                    <strong>Economiza 70% do tempo, entrega qualidade consistente.</strong>
+                </p>
             </div>
-            
-            <!-- CATEGORIA 3 -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <div class="category-title">🔍 3. SEO e Indexação</div>
-                    <div class="category-count">8/8</div>
-                </div>
-                <div class="category-content">
-                    <!-- Itens serão adicionados via JS -->
-                </div>
-            </div>
-            
-            <!-- CATEGORIA 4 -->
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <div class="category-title">📲 4. PWA (Web App Instalável)</div>
-                    <div class="category-count">5/5</div>
-                </div>
-                <div class="category-content">
-                    <!-- Itens serão adicionados via JS -->
-                </div>
-            </div>
-            
-            <!-- Adicionar mais categorias conforme o checklist -->
-            
-            <div class="category">
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <div class="category-title">🎯 12. Testes Finais</div>
-                    <div class="category-count">8/8</div>
-                </div>
-                <div class="category-content">
-                    <!-- Itens serão adicionados via JS -->
-                </div>
-            </div>
-        </section>
-        
-        <section class="actions-section">
-            <button class="btn-large btn-success" onclick="saveProgress()">
-                💾 Salvar Progresso
-            </button>
-            <button class="btn-large btn-print" onclick="window.print()">
-                🖨️ Imprimir Checklist
-            </button>
-            <button class="btn-large btn-primary" onclick="exportPDF()">
-                📄 Exportar como PDF
-            </button>
-            <button class="btn-large btn-outline" onclick="resetChecklist()">
-                🔄 Reiniciar Checklist
-            </button>
-        </section>
-        
-        <footer>
-            <p>© 2025 MakerAI Studio - Checklist Profissional para AdSense</p>
-            <p>Dica: Complete pelo menos 95% dos itens antes de aplicar para o AdSense.</p>
         </footer>
     </div>
-
+    
     <script>
-        // Dados completos do checklist
-        const checklistData = {
-            "estrutura-navegacao": [
-                { title: "Design responsivo (mobile-first)", priority: "critical", description: "Site funcional em dispositivos móveis, tablets e desktop." },
-                { title: "Menu responsivo (hambúrguer no mobile)", priority: "high", description: "Navegação otimizada para mobile com hamburger menu." },
-                { title: "Navegação clara e intuitiva", priority: "medium", description: "Usuário encontra conteúdo em até 3 cliques." },
-                { title: "Tema claro/escuro (manual ou automático)", priority: "medium", description: "Suporte a preferência do usuário." },
-                { title: "Sem pop-ups intrusivos", priority: "critical", description: "AdSense proíbe pop-ups que bloqueiam conteúdo." },
-                { title: "Sem conteúdo oculto ou redirecionamentos estranhos", priority: "critical", description: "Proibido pelo AdSense." }
-            ],
-            "seo-indexacao": [
-                { title: "Meta tags configuradas", priority: "high", description: "Title, description, Open Graph, Twitter Cards." },
-                { title: "URLs amigáveis (slug)", priority: "medium", description: "Ex: /blog/titulo-do-artigo" },
-                { title: "Estrutura de headings correta (H1, H2, H3)", priority: "medium", description: "Hierarquia semântica adequada." },
-                { title: "robots.txt configurado", priority: "medium", description: "Permitir indexação do Google." },
-                { title: "sitemap.xml criado", priority: "high", description: "Mapa do site para indexação." },
-                { title: "Conteúdo original (0% plágio)", priority: "critical", description: "AdSense rejeita conteúdo copiado." },
-                { title: "Conteúdo atualizado regularmente", priority: "medium", description: "Mostrar atividade recente." },
-                { title: "15+ artigos com +1000 palavras (boa prática)", priority: "medium", description: "Conteúdo robusto para monetização." }
-            ],
-            "pwa": [
-                { title: "manifest.json configurado", priority: "high", description: "Define nome, ícones, tema e comportamento." },
-                { title: "Service Worker funcional", priority: "high", description: "Cache estratégico e offline." },
-                { title: "Funciona offline", priority: "medium", description: "Carregar conteúdo básico sem internet." },
-                { title: "Ícones otimizados (vários tamanhos)", priority: "medium", description: "192x192, 512x512, etc." },
-                { title: "PWA instalável (Android/Chrome)", priority: "medium", description: "Prompt de instalação funcionando." }
-            ],
-            "testes-finais": [
-                { title: "Testar mobile", priority: "high", description: "Chrome DevTools + dispositivo real." },
-                { title: "Testar tablet", priority: "medium", description: "Responsividade intermediária." },
-                { title: "Testar desktop", priority: "medium", description: "Telas grandes e resoluções." },
-                { title: "Testar tema claro/escuro", priority: "low", description: "Funcionalidade em ambos os temas." },
-                { title: "Testar idiomas", priority: "high", description: "Todos os idiomas configurados." },
-                { title: "Testar offline", priority: "medium", description: "PWA funcional sem internet." },
-                { title: "Testar formulários", priority: "high", description: "Envio, validação e feedback." },
-                { title: "Testar AdSense spots", priority: "critical", description: "Verificar posicionamento e espaçamento." }
-            ]
-        };
-
-        // Estado do checklist
+        // ==================== SISTEMA DE CHECKLIST ====================
         let checklistState = {
-            completed: [],
+            checkedItems: [],
             lastUpdated: new Date().toISOString()
         };
-
-        // Carregar dados salvos
-        function loadProgress() {
-            const saved = localStorage.getItem('adsense-checklist');
+        
+        // Carregar estado salvo
+        function loadChecklistState() {
+            const saved = localStorage.getItem('mindmapChecklist');
             if (saved) {
                 checklistState = JSON.parse(saved);
-                updateUI();
-            }
-        }
-
-        // Salvar progresso
-        function saveProgress() {
-            checklistState.lastUpdated = new Date().toISOString();
-            localStorage.setItem('adsense-checklist', JSON.stringify(checklistState));
-            
-            // Feedback visual
-            const btn = event.target;
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '✅ Salvo com Sucesso!';
-            btn.style.background = '#0f9d58';
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-            }, 2000);
-            
-            updateStats();
-        }
-
-        // Marcar item como feito
-        function markAsDone(btn) {
-            const item = btn.closest('.checklist-item');
-            const checkbox = item.querySelector('.checkbox');
-            toggleCheck(checkbox);
-        }
-
-        // Alternar checkbox
-        function toggleCheck(checkbox) {
-            checkbox.classList.toggle('checked');
-            const itemId = checkbox.closest('.checklist-item').getAttribute('data-id');
-            
-            if (checkbox.classList.contains('checked')) {
-                if (!checklistState.completed.includes(itemId)) {
-                    checklistState.completed.push(itemId);
-                }
-            } else {
-                checklistState.completed = checklistState.completed.filter(id => id !== itemId);
-            }
-            
-            updateStats();
-        }
-
-        // Alternar categoria
-        function toggleCategory(header) {
-            header.parentElement.classList.toggle('expanded');
-        }
-
-        // Atualizar estatísticas
-        function updateStats() {
-            const total = document.querySelectorAll('.checklist-item').length;
-            const completed = checklistState.completed.length;
-            const percentage = Math.round((completed / total) * 100);
-            
-            document.getElementById('totalItems').textContent = total;
-            document.getElementById('completedItems').textContent = completed;
-            document.getElementById('completionRate').textContent = percentage + '%';
-            document.getElementById('progressPercent').textContent = percentage + '%';
-            document.getElementById('progressFill').style.width = percentage + '%';
-            
-            // Atualizar contadores das categorias
-            document.querySelectorAll('.category').forEach(category => {
-                const items = category.querySelectorAll('.checklist-item');
-                let completedCount = 0;
                 
-                items.forEach(item => {
-                    const id = item.getAttribute('data-id');
-                    if (checklistState.completed.includes(id)) {
-                        completedCount++;
-                        item.querySelector('.checkbox').classList.add('checked');
+                // Marcar checkboxes
+                checklistState.checkedItems.forEach(id => {
+                    const checkbox = document.querySelector(`[data-id="${id}"]`);
+                    if (checkbox) {
+                        checkbox.classList.add('checked');
                     }
                 });
                 
-                const countEl = category.querySelector('.category-count');
-                if (countEl) {
-                    countEl.textContent = `${completedCount}/${items.length}`;
+                updateProgress();
+            }
+        }
+        
+        // Alternar checkbox
+        function toggleCheck(checkbox) {
+            const id = checkbox.getAttribute('data-id');
+            const isChecked = checkbox.classList.contains('checked');
+            
+            if (isChecked) {
+                checkbox.classList.remove('checked');
+                checklistState.checkedItems = checklistState.checkedItems.filter(item => item !== id);
+            } else {
+                checkbox.classList.add('checked');
+                if (!checklistState.checkedItems.includes(id)) {
+                    checklistState.checkedItems.push(id);
                 }
-            });
+            }
+            
+            checklistState.lastUpdated = new Date().toISOString();
+            updateProgress();
+            saveChecklist();
         }
-
-        // Exportar como PDF (simulação)
-        function exportPDF() {
-            alert('Funcionalidade de PDF será implementada. Por enquanto, use a opção de impressão (Ctrl+P).');
+        
+        // Atualizar progresso
+        function updateProgress() {
+            const totalItems = document.querySelectorAll('.check-item').length;
+            const checkedItems = checklistState.checkedItems.length;
+            const progress = Math.round((checkedItems / totalItems) * 100);
+            
+            document.getElementById('progressPercent').textContent = progress + '%';
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Atualizar cor baseado no progresso
+            const progressBar = document.getElementById('progressBar');
+            if (progress < 25) {
+                progressBar.style.background = 'linear-gradient(90deg, var(--danger), #c5221f)';
+            } else if (progress < 50) {
+                progressBar.style.background = 'linear-gradient(90deg, var(--warning), #e6a700)';
+            } else if (progress < 75) {
+                progressBar.style.background = 'linear-gradient(90deg, var(--accent), #d0007d)';
+            } else {
+                progressBar.style.background = 'linear-gradient(90deg, var(--success), #0c8043)';
+            }
         }
-
+        
+        // Salvar checklist
+        function saveChecklist() {
+            localStorage.setItem('mindmapChecklist', JSON.stringify(checklistState));
+            
+            // Feedback visual
+            const progressPercent = document.getElementById('progressPercent');
+            const originalText = progressPercent.textContent;
+            progressPercent.textContent = '✅ Salvo!';
+            progressPercent.style.color = 'var(--success)';
+            
+            setTimeout(() => {
+                progressPercent.textContent = originalText;
+                progressPercent.style.color = '';
+                updateProgress();
+            }, 1000);
+        }
+        
         // Reiniciar checklist
         function resetChecklist() {
-            if (confirm('Tem certeza que deseja reiniciar todo o checklist? Todo o progresso será perdido.')) {
-                checklistState = { completed: [], lastUpdated: new Date().toISOString() };
-                localStorage.removeItem('adsense-checklist');
+            if (confirm('Tem certeza que deseja reiniciar todo o checklist?')) {
+                checklistState = {
+                    checkedItems: [],
+                    lastUpdated: new Date().toISOString()
+                };
                 
-                document.querySelectorAll('.checkbox').forEach(cb => {
-                    cb.classList.remove('checked');
+                document.querySelectorAll('.check-item').forEach(checkbox => {
+                    checkbox.classList.remove('checked');
                 });
                 
-                updateStats();
-                alert('Checklist reiniciado com sucesso!');
+                updateProgress();
+                saveChecklist();
+                
+                // Feedback
+                const progressPercent = document.getElementById('progressPercent');
+                progressPercent.textContent = '🔄 Reiniciado!';
+                progressPercent.style.color = 'var(--warning)';
+                
+                setTimeout(() => {
+                    updateProgress();
+                }, 1500);
             }
         }
-
-        // Popular categorias dinamicamente
-        function populateCategories() {
-            let itemCounter = 1;
-            
-            // Estrutura e Navegação
-            const estruturaSection = document.querySelector('.category:nth-child(2) .category-content');
-            checklistData['estrutura-navegacao'].forEach(item => {
-                const itemId = `item-${itemCounter++}`;
-                estruturaSection.innerHTML += createChecklistItemHTML(itemId, item);
-            });
-            
-            // SEO e Indexação
-            const seoSection = document.querySelector('.category:nth-child(3) .category-content');
-            checklistData['seo-indexacao'].forEach(item => {
-                const itemId = `item-${itemCounter++}`;
-                seoSection.innerHTML += createChecklistItemHTML(itemId, item);
-            });
-            
-            // PWA
-            const pwaSection = document.querySelector('.category:nth-child(4) .category-content');
-            checklistData['pwa'].forEach(item => {
-                itemId = `item-${itemCounter++}`;
-                pwaSection.innerHTML += createChecklistItemHTML(itemId, item);
-            });
-            
-            // Testes Finais
-            const testesSection = document.querySelector('.category:last-child .category-content');
-            checklistData['testes-finais'].forEach(item => {
-                itemId = `item-${itemCounter++}`;
-                testesSection.innerHTML += createChecklistItemHTML(itemId, item);
-            });
+        
+        // ==================== NAVEGAÇÃO ====================
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Feedback visual
+                element.style.animation = 'none';
+                setTimeout(() => {
+                    element.style.animation = 'fadeIn 0.6s ease';
+                }, 10);
+            }
         }
-
-        // Criar HTML do item
-        function createChecklistItemHTML(id, data) {
-            return `
-                <div class="checklist-item" data-id="${id}" data-priority="${data.priority}">
-                    <div class="checkbox" onclick="toggleCheck(this)"></div>
-                    <div class="item-content">
-                        <div class="item-title">
-                            ${data.title}
-                            <span class="priority ${data.priority}">${data.priority.toUpperCase()}</span>
-                        </div>
-                        <div class="item-description">${data.description}</div>
-                        <div class="item-actions">
-                            <button class="btn-small btn-primary" onclick="markAsDone(this)">Marcar como Feito</button>
-                            <button class="btn-small btn-outline" onclick="showDetails(this)">Ver Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Mostrar detalhes (simulação)
-        function showDetails(btn) {
-            const item = btn.closest('.checklist-item');
-            const title = item.querySelector('.item-title').textContent;
-            const description = item.querySelector('.item-description').textContent;
+        
+        // ==================== EXEMPLOS INTERATIVOS ====================
+        function showExample(type) {
+            let message = '';
             
-            alert(`🔍 ${title}\n\n${description}\n\n💡 Dica: Verifique cuidadosamente este requisito antes de marcar como concluído.`);
-        }
+            switch(type) {
+                case 'fluxo':
+                    message = `
+🎯 EXEMPLO PRÁTICO: "Sistema de Agendamento"
 
-        // Atualizar UI completa
-        function updateUI() {
-            populateCategories();
-            updateStats();
+SEMANA 1 (MVP):
+• index.html com calendário básico
+• Formulário de agendamento
+• Mobile-first design
+• 1 arquivo só
+
+SEMANA 2 (V1.0):
+• /pages/agendamentos.html
+• /pages/clientes.html
+• PWA instalável
+• Exportação para Google Calendar
+
+SEMANA 3 (V2.0):
+• Dashboard com analytics
+• Notificações por email
+• Pagamentos integrados
+• App mobile (PWA)
+                    `;
+                    break;
+                    
+                case 'arquitetura':
+                    message = `
+🏗️ EXEMPLO DE ESTRUTURA:
+
+projeto-cliente/
+├── index.html              # Página principal
+├── manifest.json          # PWA config
+├── service-worker.js      # Offline
+├── assets/
+│   ├── css/
+│   │   ├── critical.css  # 300 linhas inline
+│   │   └── main.css      # Resto do CSS
+│   ├── js/
+│   │   ├── core.js       # Funcionalidades essenciais
+│   │   └── deferred.js   # Não crítico
+│   └── images/
+│       ├── logo.webp
+│       └── hero.webp
+├── pages/
+│   ├── portfolio/
+│   │   ├── index.html
+│   │   └── projeto-1.html
+│   ├── blog/
+│   │   ├── index.html
+│   │   └── artigo-1.html
+│   └── legal/
+│       ├── privacidade.html
+│       └── termos.html
+└── README.md
+                    `;
+                    break;
+            }
             
-            // Marcar itens concluídos
-            checklistState.completed.forEach(id => {
-                const item = document.querySelector(`[data-id="${id}"]`);
-                if (item) {
-                    item.querySelector('.checkbox').classList.add('checked');
-                }
-            });
+            alert(message);
         }
-
-        // Inicializar
+        
+        // ==================== INICIALIZAÇÃO ====================
         document.addEventListener('DOMContentLoaded', () => {
-            loadProgress();
-            updateUI();
+            // Carregar checklist
+            loadChecklistState();
             
-            // Adicionar efeito de digitação no título
-            const title = document.querySelector('h1');
-            const originalText = title.textContent;
-            title.textContent = '';
+            // Animar elementos ao scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
             
-            let i = 0;
-            function typeWriter() {
-                if (i < originalText.length) {
-                    title.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            }
+            document.querySelectorAll('.mind-card, .step, .timeline-item').forEach(el => {
+                observer.observe(el);
+            });
             
-            setTimeout(typeWriter, 500);
+            // Adicionar tooltips
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.title = 'Clique para ir para esta seção';
+            });
+            
+            // Mostrar progresso inicial
+            updateProgress();
+            
+            console.log('🧠 Mappa Mental Visual carregado!');
+            console.log('🎯 Use este guia para todos os projetos futuros.');
         });
+        
+        // ==================== FUNÇÕES ADICIONAIS ====================
+        function printMindmap() {
+            window.print();
+        }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+        
+        // Carregar modo escuro salvo
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
     </script>
+    
+    <!-- Estilos extras para impressão -->
+    <style media="print">
+        @page {
+            size: landscape;
+            margin: 0.5cm;
+        }
+        
+        body {
+            background: white !important;
+            padding: 0 !important;
+        }
+        
+        .mindmap-container {
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+        
+        .mindmap-header {
+            break-inside: avoid;
+        }
+        
+        .btn, .nav-visual, .mindmap-footer {
+            display: none !important;
+        }
+        
+        .mind-card {
+            break-inside: avoid;
+            box-shadow: none !important;
+            border: 1px solid #ddd !important;
+        }
+        
+        .flowchart, .checklist-section, .timeline {
+            break-inside: avoid;
+        }
+    </style>
 </body>
 </html>
