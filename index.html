@@ -14,35 +14,37 @@
     <style>
         /* ==================== RESET & VARIÁVEIS ==================== */
         :root {
-            /* Cores */
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #e63946;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
+            /* Cores atualizadas - Contraste melhorado */
+            --primary: #2d4bd6;
+            --secondary: #1e3a8a;
+            --accent: #c026d3;
+            --success: #0891b2;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --dark: #1e293b; /* Mais escuro para melhor contraste */
+            --dark-light: #334155; /* Tom intermediário */
+            --light: #ffffff; /* Fundo claro */
+            --gray: #64748b;
+            --gray-light: #f1f5f9;
             
-            /* Espaçamentos */
+            /* Espaçamentos mobile-first */
             --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
+            --space-sm: 0.75rem;
+            --space-md: 1.25rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
             
             /* Bordas */
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 30px;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
             
-            /* Sombras */
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
-            --shadow-xl: 0 20px 60px rgba(0,0,0,0.2);
+            /* Sombras mais sutis */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.07);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
             
             /* Transições */
             --transition-fast: 0.2s ease;
@@ -50,14 +52,15 @@
             --transition-slow: 0.5s ease;
         }
         
-        /* Tema escuro */
+        /* Tema escuro opcional - mantendo o foco no claro */
         @media (prefers-color-scheme: dark) {
             :root {
-                --light: #1a1a2e;
-                --dark: #f8f9fa;
-                --gray: #adb5bd;
-                --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
-                --shadow-md: 0 5px 15px rgba(0,0,0,0.3);
+                --light: #0f172a;
+                --dark: #f8fafc;
+                --gray: #cbd5e1;
+                --gray-light: #1e293b;
+                --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+                --shadow-md: 0 4px 6px rgba(0,0,0,0.2);
             }
         }
         
@@ -69,34 +72,54 @@
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 20px;
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--gray-light);
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
         }
         
         /* ==================== LAYOUT PRINCIPAL ==================== */
         .mindmap-container {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
-            background: white;
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
+            background: var(--light);
+            border-radius: 0;
+            box-shadow: none;
             overflow: hidden;
-            min-height: 90vh;
+            min-height: 100vh;
+        }
+        
+        /* Tablet */
+        @media (min-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .mindmap-container {
+                border-radius: var(--radius-xl);
+                box-shadow: var(--shadow-xl);
+                min-height: 90vh;
+            }
+        }
+        
+        /* Desktop */
+        @media (min-width: 1024px) {
+            body {
+                padding: 20px;
+            }
         }
         
         /* ==================== CABEÇALHO ==================== */
         .mindmap-header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: var(--space-xl) var(--space-lg);
+            padding: var(--space-lg) var(--space-md);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -110,7 +133,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 30px 30px;
+            background-size: 25px 25px;
             animation: float 20s linear infinite;
             z-index: 0;
         }
@@ -121,14 +144,14 @@
         }
         
         .mindmap-header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.75rem, 5vw, 3rem);
             font-weight: 800;
             margin-bottom: var(--space-sm);
             line-height: 1.2;
         }
         
         .mindmap-header p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: clamp(1rem, 2vw, 1.2rem);
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
@@ -138,7 +161,7 @@
         .nav-visual {
             display: flex;
             justify-content: center;
-            gap: var(--space-md);
+            gap: var(--space-sm);
             margin-top: var(--space-lg);
             flex-wrap: wrap;
         }
@@ -147,48 +170,90 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: var(--space-md);
-            background: rgba(255,255,255,0.1);
-            border-radius: var(--radius-lg);
+            padding: var(--space-sm);
+            background: rgba(255,255,255,0.15);
+            border-radius: var(--radius-md);
             backdrop-filter: blur(10px);
             cursor: pointer;
             transition: var(--transition-normal);
-            min-width: 100px;
+            min-width: 90px;
+            flex: 1;
+            max-width: 120px;
         }
         
         .nav-item:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-5px);
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
         }
         
         .nav-icon {
-            font-size: 2rem;
-            margin-bottom: var(--space-xs);
+            font-size: 1.75rem;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item span {
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        /* Mobile - navegação em linha única com scroll */
+        @media (max-width: 480px) {
+            .nav-visual {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+                margin-left: -10px;
+                margin-right: -10px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .nav-item {
+                min-width: 80px;
+                flex: 0 0 auto;
+            }
         }
         
         /* ==================== CONTEÚDO PRINCIPAL ==================== */
         .mindmap-content {
-            padding: var(--space-xl);
+            padding: var(--space-md);
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
+            grid-template-columns: 1fr;
+            gap: var(--space-md);
+        }
+        
+        /* Tablet - 2 colunas */
+        @media (min-width: 768px) {
+            .mindmap-content {
+                padding: var(--space-lg);
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-lg);
+            }
+        }
+        
+        /* Desktop - 2 colunas, áreas maiores */
+        @media (min-width: 1024px) {
+            .mindmap-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--space-xl);
+            }
         }
         
         /* ==================== CARDS VISUAIS ==================== */
         .mind-card {
             background: var(--light);
             border-radius: var(--radius-lg);
-            padding: var(--space-lg);
+            padding: var(--space-md);
             box-shadow: var(--shadow-md);
             transition: var(--transition-normal);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid var(--gray-light);
         }
         
         .mind-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
         
         .mind-card::before {
@@ -197,33 +262,35 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
         }
         
         .card-header {
             display: flex;
-            align-items: center;
-            gap: var(--space-md);
+            align-items: flex-start;
+            gap: var(--space-sm);
             margin-bottom: var(--space-md);
         }
         
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: white;
+            flex-shrink: 0;
         }
         
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--dark);
+            line-height: 1.3;
         }
         
         /* ==================== LISTAS VISUAIS ==================== */
@@ -234,7 +301,7 @@
         .visual-item {
             padding: var(--space-sm);
             margin-bottom: var(--space-sm);
-            background: rgba(67, 97, 238, 0.05);
+            background: rgba(45, 75, 214, 0.04);
             border-radius: var(--radius-sm);
             border-left: 4px solid var(--primary);
             display: flex;
@@ -244,22 +311,22 @@
         
         .visual-item.critical {
             border-left-color: var(--danger);
-            background: rgba(230, 57, 70, 0.05);
+            background: rgba(220, 38, 38, 0.04);
         }
         
         .visual-item.success {
             border-left-color: var(--success);
-            background: rgba(76, 201, 240, 0.05);
+            background: rgba(8, 145, 178, 0.04);
         }
         
         .visual-item.warning {
             border-left-color: var(--warning);
-            background: rgba(248, 150, 30, 0.05);
+            background: rgba(217, 119, 6, 0.04);
         }
         
         .item-number {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             background: var(--primary);
             color: white;
             border-radius: 50%;
@@ -268,33 +335,42 @@
             justify-content: center;
             font-weight: 700;
             flex-shrink: 0;
+            font-size: 0.85rem;
         }
         
         .visual-item.critical .item-number {
             background: var(--danger);
         }
         
+        .visual-item.success .item-number {
+            background: var(--success);
+        }
+        
+        .visual-item.warning .item-number {
+            background: var(--warning);
+        }
+        
         /* ==================== FLUXOGRAMA VISUAL ==================== */
         .flowchart {
             background: var(--light);
             border-radius: var(--radius-lg);
-            padding: var(--space-lg);
+            padding: var(--space-md);
             box-shadow: var(--shadow-md);
             grid-column: 1 / -1;
-            margin-top: var(--space-lg);
+            margin-top: var(--space-md);
         }
         
         .flowchart-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: var(--space-xl);
+            font-size: 1.5rem;
+            margin-bottom: var(--space-lg);
             color: var(--dark);
             font-weight: 800;
         }
         
         .flowchart-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: var(--space-lg);
             position: relative;
         }
@@ -302,11 +378,12 @@
         .flowchart-steps::before {
             content: '';
             position: absolute;
-            top: 60px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
             z-index: 0;
         }
         
@@ -314,12 +391,14 @@
             position: relative;
             z-index: 1;
             text-align: center;
+            margin: 0 auto;
+            max-width: 300px;
         }
         
         .step-circle {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto var(--space-md);
+            width: 100px;
+            height: 100px;
+            margin: 0 auto var(--space-sm);
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-radius: 50%;
             display: flex;
@@ -333,33 +412,55 @@
         }
         
         .step-circle:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: var(--shadow-xl);
         }
         
         .step-number {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 800;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
         
         .step-name {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 0.8rem;
+            opacity: 0.95;
         }
         
         .step-description {
-            padding: var(--space-md);
-            background: white;
+            padding: var(--space-sm);
+            background: var(--gray-light);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-sm);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Tablet e desktop - fluxograma horizontal */
+        @media (min-width: 768px) {
+            .flowchart-steps {
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space-md);
+            }
+            
+            .flowchart-steps::before {
+                top: 50px;
+                left: 0;
+                right: 0;
+                width: 100%;
+                height: 4px;
+                transform: none;
+                background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            }
+            
+            .step {
+                max-width: none;
+            }
         }
         
         /* ==================== TIMELINE ==================== */
         .timeline {
             position: relative;
-            padding: var(--space-lg) 0;
+            padding: var(--space-md) 0;
             grid-column: 1 / -1;
         }
         
@@ -367,8 +468,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;
             width: 4px;
             height: 100%;
             background: linear-gradient(to bottom, var(--primary), var(--accent));
@@ -376,53 +476,69 @@
         
         .timeline-item {
             position: relative;
-            width: 45%;
-            margin-bottom: var(--space-xl);
+            width: calc(100% - 50px);
+            margin-bottom: var(--space-lg);
             padding: var(--space-md);
             background: var(--light);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 55%;
+            margin-left: 50px;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
             top: 20px;
+            left: -40px;
             width: 20px;
             height: 20px;
             border-radius: 50%;
             background: var(--primary);
-            box-shadow: 0 0 0 4px white, 0 0 0 8px var(--primary);
-        }
-        
-        .timeline-item:nth-child(odd)::before {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even)::before {
-            left: -10px;
+            box-shadow: 0 0 0 4px var(--light), 0 0 0 6px var(--primary);
         }
         
         .timeline-time {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 5px;
         }
         
         .timeline-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: var(--space-sm);
             color: var(--dark);
+        }
+        
+        /* Desktop - timeline alternada */
+        @media (min-width: 1024px) {
+            .timeline::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .timeline-item {
+                width: 45%;
+                margin-left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 55%;
+            }
+            
+            .timeline-item:nth-child(odd)::before {
+                right: -10px;
+                left: auto;
+            }
+            
+            .timeline-item:nth-child(even)::before {
+                left: -10px;
+            }
         }
         
         /* ==================== CHECKLIST INTERATIVO ==================== */
@@ -430,20 +546,20 @@
             grid-column: 1 / -1;
             background: var(--light);
             border-radius: var(--radius-lg);
-            padding: var(--space-lg);
+            padding: var(--space-md);
             box-shadow: var(--shadow-md);
-            margin-top: var(--space-lg);
+            margin-top: var(--space-md);
         }
         
         .checklist-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: var(--space-md);
             margin-top: var(--space-lg);
         }
         
         .checklist-category {
-            background: white;
+            background: var(--gray-light);
             border-radius: var(--radius-md);
             padding: var(--space-md);
             box-shadow: var(--shadow-sm);
@@ -462,8 +578,8 @@
         }
         
         .check-item {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             border: 2px solid var(--gray);
             border-radius: var(--radius-sm);
             cursor: pointer;
@@ -471,6 +587,7 @@
             align-items: center;
             justify-content: center;
             transition: var(--transition-fast);
+            flex-shrink: 0;
         }
         
         .check-item.checked {
@@ -484,81 +601,32 @@
             font-weight: bold;
         }
         
-        /* ==================== RESPONSIVIDADE ==================== */
-        @media (max-width: 768px) {
-            .mindmap-content {
-                padding: var(--space-md);
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-visual {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-item {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .flowchart-steps {
-                grid-template-columns: 1fr;
-            }
-            
-            .flowchart-steps::before {
-                display: none;
-            }
-            
-            .step {
-                margin-bottom: var(--space-lg);
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                width: calc(100% - 50px);
-                left: 50px !important;
-                margin-left: 0;
-            }
-            
-            .timeline-item::before {
-                left: -40px !important;
-            }
-            
+        /* Tablet - checklist em 2 colunas */
+        @media (min-width: 768px) {
             .checklist-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        /* ==================== ANIMAÇÕES ==================== */
-        @keyframes float {
-            0% { transform: rotate(0deg) translateX(0); }
-            100% { transform: rotate(360deg) translateX(0); }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease forwards;
+        /* Desktop - checklist em 4 colunas */
+        @media (min-width: 1024px) {
+            .checklist-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
         
         /* ==================== RODAPÉ ==================== */
         .mindmap-footer {
             text-align: center;
-            padding: var(--space-xl);
+            padding: var(--space-lg) var(--space-md);
             background: var(--dark);
             color: white;
-            margin-top: var(--space-xl);
+            margin-top: var(--space-lg);
         }
         
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr;
             gap: var(--space-lg);
             margin-bottom: var(--space-lg);
         }
@@ -568,17 +636,24 @@
             color: var(--success);
         }
         
+        /* Tablet - rodapé em 3 colunas */
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
         /* ==================== UTILITÁRIOS ==================== */
         .tag {
             display: inline-block;
-            padding: 4px 12px;
+            padding: 3px 10px;
             background: var(--primary);
             color: white;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            border-radius: 16px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-right: 8px;
-            margin-bottom: 8px;
+            margin-right: 6px;
+            margin-bottom: 6px;
         }
         
         .tag.critical { background: var(--danger); }
@@ -587,25 +662,26 @@
         .tag.low { background: var(--success); }
         
         .highlight {
-            background: linear-gradient(120deg, rgba(67, 97, 238, 0.1) 0%, rgba(67, 97, 238, 0.1) 100%);
+            background: linear-gradient(120deg, rgba(45, 75, 214, 0.08) 0%, rgba(45, 75, 214, 0.08) 100%);
             padding: 2px 6px;
             border-radius: 4px;
             font-weight: 600;
+            color: var(--dark);
         }
         
         .emoji {
-            font-size: 1.2em;
-            margin-right: 8px;
+            font-size: 1.1em;
+            margin-right: 6px;
         }
         
         .section-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             margin-bottom: var(--space-lg);
             color: var(--dark);
             text-align: center;
             position: relative;
-            padding-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
         }
         
         .section-title::after {
@@ -614,15 +690,15 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
+            width: 80px;
+            height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 2px;
         }
         
         /* ==================== BOTÕES ==================== */
         .btn {
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: var(--radius-md);
             border: none;
             font-weight: 600;
@@ -632,6 +708,7 @@
             align-items: center;
             gap: 8px;
             text-decoration: none;
+            font-size: 0.9rem;
         }
         
         .btn-primary {
@@ -640,7 +717,7 @@
         }
         
         .btn-primary:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
         
@@ -661,9 +738,83 @@
             text-align: center;
             justify-content: center;
         }
+        
+        /* ==================== ANIMAÇÕES ==================== */
+        @keyframes float {
+            0% { transform: rotate(0deg) translateX(0); }
+            100% { transform: rotate(360deg) translateX(0); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        /* ==================== MELHORIAS DE TEXTO ==================== */
+        p, li, span, div {
+            color: var(--dark) !important;
+        }
+        
+        small {
+            color: var(--gray) !important;
+        }
+        
+        strong {
+            color: var(--dark) !important;
+        }
+        
+        /* Contraste melhorado para cards */
+        .mind-card .card-title,
+        .mind-card .visual-item strong,
+        .mind-card .highlight,
+        .flowchart .step-description strong,
+        .timeline .timeline-title {
+            color: var(--dark) !important;
+        }
+        
+        /* ==================== IMPRESSÃO ==================== */
+        @media print {
+            @page {
+                size: landscape;
+                margin: 0.5cm;
+            }
+            
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            
+            .mindmap-container {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            
+            .mindmap-header {
+                break-inside: avoid;
+            }
+            
+            .btn, .nav-visual, .mindmap-footer {
+                display: none !important;
+            }
+            
+            .mind-card {
+                break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .flowchart, .checklist-section, .timeline {
+                break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- O conteúdo HTML permanece exatamente o mesmo -->
     <div class="mindmap-container">
         <!-- CABEÇALHO -->
         <header class="mindmap-header">
@@ -707,7 +858,7 @@
                     <h2 class="card-title">Arquitetura Padrão</h2>
                 </div>
                 
-                <p style="margin-bottom: var(--space-md); color: var(--gray);">
+                <p style="margin-bottom: var(--space-md);">
                     <strong>🎯 REGRA DE OURO:</strong> Comece com 1 arquivo, separe conforme cresce
                 </p>
                 
@@ -746,7 +897,7 @@
                     </li>
                 </ul>
                 
-                <div style="margin-top: var(--space-md); padding: var(--space-md); background: rgba(67, 97, 238, 0.05); border-radius: var(--radius-md);">
+                <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(45, 75, 214, 0.05); border-radius: var(--radius-md);">
                     <strong>💡 EXEMPLO PRÁTICO:</strong>
                     <p style="margin-top: 5px; font-size: 0.9rem;">
                         Seu projeto "ClienteX" começa como <span class="highlight">clienteX.html</span>.<br>
@@ -763,20 +914,20 @@
                 </div>
                 
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); margin-bottom: var(--space-md);">
-                    <div style="text-align: center; padding: var(--space-sm); background: rgba(76, 201, 240, 0.1); border-radius: var(--radius-sm);">
-                        <div style="font-size: 2rem; font-weight: 800; color: var(--success);">2.5s</div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(8, 145, 178, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 1.75rem; font-weight: 800; color: var(--success);">2.5s</div>
                         <small>LCP máximo</small>
                     </div>
-                    <div style="text-align: center; padding: var(--space-sm); background: rgba(67, 97, 238, 0.1); border-radius: var(--radius-sm);">
-                        <div style="font-size: 2rem; font-weight: 800; color: var(--primary);">2MB</div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(45, 75, 214, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">2MB</div>
                         <small>Bundle máximo</small>
                     </div>
-                    <div style="text-align: center; padding: var(--space-sm); background: rgba(248, 150, 30, 0.1); border-radius: var(--radius-sm);">
-                        <div style="font-size: 2rem; font-weight: 800; color: var(--warning);">300</div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(217, 119, 6, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 1.75rem; font-weight: 800; color: var(--warning);">300</div>
                         <small>Linhas CSS críticas</small>
                     </div>
-                    <div style="text-align: center; padding: var(--space-sm); background: rgba(230, 57, 70, 0.1); border-radius: var(--radius-sm);">
-                        <div style="font-size: 2rem; font-weight: 800; color: var(--danger);">90+</div>
+                    <div style="text-align: center; padding: var(--space-sm); background: rgba(220, 38, 38, 0.1); border-radius: var(--radius-sm);">
+                        <div style="font-size: 1.75rem; font-weight: 800; color: var(--danger);">90+</div>
                         <small>Lighthouse score</small>
                     </div>
                 </div>
@@ -808,7 +959,7 @@
                     <h2 class="card-title">UX/UI Consistente</h2>
                 </div>
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space-md);">
+                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-md);">
                     <span class="tag critical">Mobile-first</span>
                     <span class="tag high">Temas claro/escuro</span>
                     <span class="tag medium">Feedback visual</span>
@@ -819,11 +970,11 @@
                 
                 <div style="margin-bottom: var(--space-md);">
                     <strong>🎨 DESIGN SYSTEM:</strong>
-                    <div style="display: flex; gap: 10px; margin-top: 10px;">
-                        <div style="width: 30px; height: 30px; background: var(--primary); border-radius: var(--radius-sm);"></div>
-                        <div style="width: 30px; height: 30px; background: var(--secondary); border-radius: var(--radius-sm);"></div>
-                        <div style="width: 30px; height: 30px; background: var(--accent); border-radius: var(--radius-sm);"></div>
-                        <div style="width: 30px; height: 30px; background: var(--success); border-radius: var(--radius-sm);"></div>
+                    <div style="display: flex; gap: 8px; margin-top: 10px;">
+                        <div style="width: 25px; height: 25px; background: var(--primary); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 25px; height: 25px; background: var(--secondary); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 25px; height: 25px; background: var(--accent); border-radius: var(--radius-sm);"></div>
+                        <div style="width: 25px; height: 25px; background: var(--success); border-radius: var(--radius-sm);"></div>
                     </div>
                 </div>
                 
@@ -874,7 +1025,7 @@
                     </li>
                 </ul>
                 
-                <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(248, 150, 30, 0.1); border-radius: var(--radius-md);">
+                <div style="margin-top: var(--space-md); padding: var(--space-sm); background: rgba(217, 119, 6, 0.1); border-radius: var(--radius-md);">
                     <strong>⚠️ NÃO ESQUEÇA:</strong>
                     <p style="margin-top: 5px; font-size: 0.9rem;">
                         Stripe/PagSeguro integrado desde o início.<br>
@@ -938,7 +1089,7 @@
                     </div>
                 </div>
                 
-                <div style="text-align: center; margin-top: var(--space-xl);">
+                <div style="text-align: center; margin-top: var(--space-lg);">
                     <button class="btn btn-primary" onclick="showExample('fluxo')">
                         <i class="fas fa-play"></i> Ver Exemplo Prático
                     </button>
@@ -1029,7 +1180,7 @@
             <!-- CHECKLIST INTERATIVO -->
             <section class="checklist-section" id="checklist">
                 <h2 class="section-title">✅ CHECKLIST INTERATIVO</h2>
-                <p style="text-align: center; margin-bottom: var(--space-lg); color: var(--gray);">
+                <p style="text-align: center; margin-bottom: var(--space-lg);">
                     Marque conforme for implementando. Salva automaticamente!
                 </p>
                 
@@ -1120,12 +1271,12 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: var(--space-xl);">
-                    <div style="display: inline-flex; align-items: center; gap: var(--space-md);">
+                    <div style="display: inline-flex; align-items: center; gap: var(--space-md); flex-wrap: wrap; justify-content: center;">
                         <div style="text-align: center;">
-                            <div id="progressPercent" style="font-size: 3rem; font-weight: 800; color: var(--success);">0%</div>
+                            <div id="progressPercent" style="font-size: 2.5rem; font-weight: 800; color: var(--success);">0%</div>
                             <small>Progresso</small>
                         </div>
-                        <div style="width: 300px; height: 20px; background: #eee; border-radius: 10px; overflow: hidden;">
+                        <div style="width: 250px; height: 16px; background: var(--gray-light); border-radius: 8px; overflow: hidden;">
                             <div id="progressBar" style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--success), #0c8043); transition: width 0.5s ease;"></div>
                         </div>
                     </div>
@@ -1145,11 +1296,11 @@
             <section class="flowchart" id="recursos">
                 <h2 class="section-title">🔧 RECURSOS & FERRAMENTAS</h2>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg);">
+                <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-md); margin-top: var(--space-lg);">
                     <!-- CARD TOOL 1 -->
-                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div style="background: var(--gray-light); padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
                         <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
-                            <div style="width: 40px; height: 40px; background: var(--primary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="width: 36px; height: 36px; background: var(--primary); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
                                 <i class="fas fa-tachometer-alt"></i>
                             </div>
                             <h3 style="color: var(--dark);">Performance</h3>
@@ -1163,9 +1314,9 @@
                     </div>
                     
                     <!-- CARD TOOL 2 -->
-                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div style="background: var(--gray-light); padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
                         <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
-                            <div style="width: 40px; height: 40px; background: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="width: 36px; height: 36px; background: var(--accent); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
                                 <i class="fas fa-code"></i>
                             </div>
                             <h3 style="color: var(--dark);">Desenvolvimento</h3>
@@ -1179,9 +1330,9 @@
                     </div>
                     
                     <!-- CARD TOOL 3 -->
-                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div style="background: var(--gray-light); padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
                         <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
-                            <div style="width: 40px; height: 40px; background: var(--success); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="width: 36px; height: 36px; background: var(--success); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <h3 style="color: var(--dark);">Analytics</h3>
@@ -1195,9 +1346,9 @@
                     </div>
                     
                     <!-- CARD TOOL 4 -->
-                    <div style="background: white; padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div style="background: var(--gray-light); padding: var(--space-md); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
                         <div style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-sm);">
-                            <div style="width: 40px; height: 40px; background: var(--warning); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="width: 36px; height: 36px; background: var(--warning); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: white;">
                                 <i class="fas fa-money-bill-wave"></i>
                             </div>
                             <h3 style="color: var(--dark);">Monetização</h3>
@@ -1210,6 +1361,21 @@
                         </ul>
                     </div>
                 </div>
+                
+                <!-- Tablet - 2 colunas -->
+                <style>
+                    @media (min-width: 768px) {
+                        #recursos > div {
+                            grid-template-columns: repeat(2, 1fr);
+                        }
+                    }
+                    
+                    @media (min-width: 1024px) {
+                        #recursos > div {
+                            grid-template-columns: repeat(4, 1fr);
+                        }
+                    }
+                </style>
             </section>
             
             <!-- RESUMO VISUAL -->
@@ -1220,35 +1386,50 @@
                 </div>
                 
                 <div style="text-align: center; padding: var(--space-lg);">
-                    <div style="font-size: 2rem; font-weight: 800; margin-bottom: var(--space-md);">
+                    <div style="font-size: 1.75rem; font-weight: 800; margin-bottom: var(--space-md);">
                         <span style="color: var(--primary);">PROJETO PERFEITO</span> = 
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-lg);">
-                        <div style="padding: var(--space-md); background: rgba(67, 97, 238, 0.1); border-radius: var(--radius-lg);">
-                            <div style="font-size: 3rem; margin-bottom: 10px;">🏗️</div>
+                    <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-md);">
+                        <div style="padding: var(--space-md); background: rgba(45, 75, 214, 0.08); border-radius: var(--radius-lg);">
+                            <div style="font-size: 2.5rem; margin-bottom: 10px;">🏗️</div>
                             <h3>Arquitetura Padrão</h3>
                             <p style="font-size: 0.9rem; margin-top: 5px;">1 arquivo → Múltiplos</p>
                         </div>
                         
-                        <div style="padding: var(--space-md); background: rgba(76, 201, 240, 0.1); border-radius: var(--radius-lg);">
-                            <div style="font-size: 3rem; margin-bottom: 10px;">⚡</div>
+                        <div style="padding: var(--space-md); background: rgba(8, 145, 178, 0.08); border-radius: var(--radius-lg);">
+                            <div style="font-size: 2.5rem; margin-bottom: 10px;">⚡</div>
                             <h3>Performance Obrigatória</h3>
                             <p style="font-size: 0.9rem; margin-top: 5px;">LCP < 2.5s</p>
                         </div>
                         
-                        <div style="padding: var(--space-md); background: rgba(248, 150, 30, 0.1); border-radius: var(--radius-lg);">
-                            <div style="font-size: 3rem; margin-bottom: 10px;">🎨</div>
+                        <div style="padding: var(--space-md); background: rgba(217, 119, 6, 0.08); border-radius: var(--radius-lg);">
+                            <div style="font-size: 2.5rem; margin-bottom: 10px;">🎨</div>
                             <h3>UX Consistente</h3>
                             <p style="font-size: 0.9rem; margin-top: 5px;">Mobile + Temas</p>
                         </div>
                         
-                        <div style="padding: var(--space-md); background: rgba(247, 37, 133, 0.1); border-radius: var(--radius-lg);">
-                            <div style="font-size: 3rem; margin-bottom: 10px;">💰</div>
+                        <div style="padding: var(--space-md); background: rgba(192, 38, 211, 0.08); border-radius: var(--radius-lg);">
+                            <div style="font-size: 2.5rem; margin-bottom: 10px;">💰</div>
                             <h3>Monetização Clara</h3>
                             <p style="font-size: 0.9rem; margin-top: 5px;">Free → Pro → Enterprise</p>
                         </div>
                     </div>
+                    
+                    <!-- Tablet e desktop - 4 colunas -->
+                    <style>
+                        @media (min-width: 768px) {
+                            #recursos + .mind-card > div > div:nth-child(3) {
+                                grid-template-columns: repeat(2, 1fr);
+                            }
+                        }
+                        
+                        @media (min-width: 1024px) {
+                            #recursos + .mind-card > div > div:nth-child(3) {
+                                grid-template-columns: repeat(4, 1fr);
+                            }
+                        }
+                    </style>
                     
                     <div style="margin-top: var(--space-xl); padding: var(--space-md); background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border-radius: var(--radius-lg);">
                         <h3 style="margin-bottom: var(--space-sm);">🎯 PRÓXIMO PROJETO:</h3>
@@ -1298,7 +1479,7 @@
             
             <div style="margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid rgba(255,255,255,0.1);">
                 <p>🧠 <strong>MAPPA MENTAL VISUAL</strong> - MakerAI Studio © 2025</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.9;">
                     Este é seu sistema operacional para projetos web profissionais.<br>
                     <strong>Economiza 70% do tempo, entrega qualidade consistente.</strong>
                 </p>
@@ -1306,6 +1487,7 @@
         </footer>
     </div>
     
+    <!-- O JavaScript permanece exatamente o mesmo -->
     <script>
         // ==================== SISTEMA DE CHECKLIST ====================
         let checklistState = {
@@ -1543,41 +1725,5 @@ projeto-cliente/
             document.body.classList.add('dark-mode');
         }
     </script>
-    
-    <!-- Estilos extras para impressão -->
-    <style media="print">
-        @page {
-            size: landscape;
-            margin: 0.5cm;
-        }
-        
-        body {
-            background: white !important;
-            padding: 0 !important;
-        }
-        
-        .mindmap-container {
-            box-shadow: none !important;
-            border-radius: 0 !important;
-        }
-        
-        .mindmap-header {
-            break-inside: avoid;
-        }
-        
-        .btn, .nav-visual, .mindmap-footer {
-            display: none !important;
-        }
-        
-        .mind-card {
-            break-inside: avoid;
-            box-shadow: none !important;
-            border: 1px solid #ddd !important;
-        }
-        
-        .flowchart, .checklist-section, .timeline {
-            break-inside: avoid;
-        }
-    </style>
 </body>
 </html>
